@@ -1,0 +1,54 @@
+== Description
+only create or edit a page in google sites
+https://sites.google.com
+
+
+== Dependencies
+gem install mechanize
+
+
+== Bugs
+* There is no error processing.
+* the error occurs when the page that already exists is made
+* when you create new page, you cant select a template except for "Web page"
+* when you edit a page, its page is overwritten
+
+
+== Examples
+
+=== Set up
+set a path, email and password
+ex) https://sites.google.com/site/YOUR_SITES/
+path = '/site/YOUR_SITES/'
+email = ''
+password = ''
+
+==== when you use google apps
+path = '/a/EXAMPLE.COM/YOUR_SITES/'
+
+
+=== Log in
+gs = GoogleSites.new(path)
+gs.login(email, password)
+
+
+=== Create new page
+ex) create hoge page under the example page
+[ATTENTION] It is necessary already to make the example page
+https://sites.google.com/site/YOUR_SITES/SOURCE_PATH/PATH_NAME
+
+source_path = "example"
+path_name = "hoge"
+title = "hoge title"
+text = "<a href='http://example.com'>Create hoge page</a>"
+gs.create(path_name, title, text, source_path)
+
+
+=== Edit a page(overwrite a page)
+ex) edit a hoge page
+https://sites.google.com/site/YOUR_SITES/EDIT_PATH
+
+edit_title = "Edit"
+edit_text = "<a href='http://example.com'>Edit hoge page</a>"
+edit_path = "example/hoge"
+gs.edit(edit_title, edit_text, edit_path)
