@@ -40,15 +40,15 @@ https://sites.google.com/site/YOUR_SITES/SOURCE_PATH/PATH_NAME
 source_path = "example"
 path_name = "hoge"
 title = "hoge title"
-text = "<a href='http://example.com'>Create hoge page</a>"
+text = "<a href='http://example.com'>Created hoge page</a>"
 gs.create(path_name, title, text, source_path)
 
 
 === Edit a page(overwrite a page)
-ex) edit a hoge page
+ex) edit a hoge page under the example page
 https://sites.google.com/site/YOUR_SITES/EDIT_PATH
 
 edit_title = "Edit"
-edit_text = "<a href='http://example.com'>Edit hoge page</a>"
+edit_text = "<a href='http://example.com'>Edited hoge page</a>"
 edit_path = "example/hoge"
 gs.edit(edit_title, edit_text, edit_path)
