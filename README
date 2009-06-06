@@ -1,5 +1,5 @@
 == Description
-only create or edit a page in google sites
+You can create, edit, move and delete a page in your google sites.
 https://sites.google.com
 
 
@@ -8,10 +8,11 @@ gem install mechanize
 
 
 == Bugs
-* There is no error processing.
-* the error occurs when the page that already exists is made
-* when you create new page, you cant select a template except for "Web page"
-* when you edit a page, its page is overwritten
+* There are many bugs, so please notice.
+* when you create a new page, you cant select a template except for "Web page".
+* when you edit a page, its page is overwritten.
+* " changes to '.
+* and so on.
 
 
 == Examples
@@ -19,12 +20,12 @@ gem install mechanize
 === Set up
 set a path, email and password
 ex) https://sites.google.com/site/YOUR_SITES/
-path = '/site/YOUR_SITES/'
+sites_path = '/site/YOUR_SITES/'
 email = ''
 password = ''
 
 ==== when you use google apps
-path = '/a/EXAMPLE.COM/YOUR_SITES/'
+sites_path = '/a/EXAMPLE.COM/YOUR_SITES/'
 
 
 === Log in
@@ -33,22 +34,49 @@ gs.login(email, password)
 
 
 === Create new page
-ex) create hoge page under the example page
-[ATTENTION] It is necessary already to make the example page
-https://sites.google.com/site/YOUR_SITES/SOURCE_PATH/PATH_NAME
+ex) create new page under the top page.
+https://sites.google.com/site/YOUR_SITES/NEW_PATH
 
-source_path = "example"
-path_name = "hoge"
+new_path = "hoge"
 title = "hoge title"
 text = "<a href='http://example.com'>Created hoge page</a>"
-gs.create(path_name, title, text, source_path)
+gs.create(new_path, title, text)
+
+
+ex) create new page under the "hoge" page
+https://sites.google.com/site/YOUR_SITES/SOURCE_PATH/NEW_PATH
+[ATTENTION] It is necessary already to make the example page
+
+source_path = "hoge"
+new_path = "test"
+title = "test title"
+text = "<a href='http://example.com'>Created test page</a>"
+gs.create(new_path, title, text, source_path)
 
 
 === Edit a page(overwrite a page)
-ex) edit a hoge page under the example page
+ex) edit "test" page under the "hoge" page
 https://sites.google.com/site/YOUR_SITES/EDIT_PATH
 
+edit_path = "hoge/test"
 edit_title = "Edit"
 edit_text = "<a href='http://example.com'>Edited hoge page</a>"
-edit_path = "example/hoge"
-gs.edit(edit_title, edit_text, edit_path)
+gs.edit(edit_path, edit_title, edit_text)
+
+
+=== Delete a page
+ex) delete "test" page under the "hoge" page
+https://sites.google.com/site/YOUR_SITES/DELETE_PATH
+
+delete_path = "hoge/test"
+gs.delete(delete_path)
+
+
+=== Move a page
+ex) move a page in top page
+https://sites.google.com/site/YOUR_SITES/hoge/test
+https://sites.google.com/site/YOUR_SITES/hoge2
+
+old_path = "hoge/test"
+new_path = "hoge2"
+gs.move(old_path, new_path)

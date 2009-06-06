@@ -4,14 +4,16 @@ require 'rubygems'
 require 'mechanize'
 require 'google_sites'
 
-path = '/site/YOUR_SITES/'
+sites_path = '/site/YOUR_SITES/'
 email = ''
 password = ''
 
-gs = GoogleSites.new(path)
+gs = GoogleSites.new(sites_path)
 gs.login(email, password)
 
-path_name = "hoge"
+# create "hoge" page.
+# https://sites.google.com/site/YOUR_SITES/hoge
+new_path = "hoge"
 title = "hoge title"
-text = "<a href='http://example.com'>Create hoge page</a>"
-gs.create(path_name, title, text)
+text = "<a href='http://example.com'>Created hoge page</a>"
+gs.create(new_path, title, text)
